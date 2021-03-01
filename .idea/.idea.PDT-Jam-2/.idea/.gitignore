@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/projectSettingsUpdater.xml
+/modules.xml
+/.idea.PDT-Jam-2.iml
+# Datasource local storage ignored files
+/../../../../../../../../../../../:\Users\jorda\Documents\School\2021 Autumn\Playmakers Development Team\PDT-Jam-2\.idea\.idea.PDT-Jam-2\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
