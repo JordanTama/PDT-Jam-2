@@ -1,32 +1,31 @@
-﻿Shader "Card/Mask"
+﻿Shader "Card/Content"
 {
-	Properties
-	{
-		_MainTex ("Mask", 2D) = "white" {}
-		_Col ("Colour", Color) = (1, 1, 1, 1)
-		[IntRange] _StencilRef ("Stencil Reference Value", Range(0, 255)) = 0
-	}
+    Properties
+    {
+        _MainTex ("Texture", 2D) = "white" {}
+        [HDR] _Col ("Tint", Color) = (1, 1, 1, 1)
+        [IntRange] _StencilRef ("Stencil Reference Value", Range(0, 255)) = 0
+    }
+    SubShader
+    {
+        Stencil
+        {
+            Ref [_StencilRef]
+            Comp Equal
+            Pass Keep
+        }
+        
+        Tags
+        {
+            "Queue" = "Transparent"
+            "RenderType" = "Transparent"
+        }
 
-	SubShader
-	{
-		Stencil
-		{
-			Ref [_StencilRef]
-			Comp Always
-			Pass Replace
-		}
-		
-		Tags
-		{
-			"Queue" = "Transparent"
-			"RenderType" = "Transparent"
-		}
-		
-		ZWrite Off
-
-		Pass
-		{
-			CGPROGRAM
+        Pass
+        {
+            Blend SrcAlpha OneMinusSrcAlpha
+            
+            CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
 
@@ -45,7 +44,7 @@
             };
 
             sampler2D _MainTex;
-			float4 _Col;
+            float4 _Col;
 
             v2f vert (appdata v)
             {
@@ -58,10 +57,9 @@
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
-            	clip(col.a - 1);
                 return col * _Col;
             }
             ENDCG
-		}
-	}
+        }
+    }
 }
