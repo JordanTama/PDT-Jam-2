@@ -23,7 +23,7 @@ namespace Cards
         }
         
 
-        private void OnEnable()
+        private void Start()
         {
             UpdateMaterialList();
             
