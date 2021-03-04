@@ -42,7 +42,7 @@
             float4 _Noise_ST;
 
             sampler2D _Mask;
-            uniform sampler2D _GrabPassTransparent;
+            sampler2D _GrabPassTransparent;
 
             v2f vert (appdata v)
             {
