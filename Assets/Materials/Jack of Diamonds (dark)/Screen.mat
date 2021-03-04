@@ -74,12 +74,14 @@ Material:
     - _BumpScale: 1
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DispAmt: 0.02
     - _DstBlend: 0
     - _EnvironmentReflections: 1
+    - _Freq: 50
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Intensity: 1
+    - _Intensity: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _QueueOffset: 0
@@ -87,9 +89,14 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _SplitDispAmt: 0.02
+    - _SplitFreq: 50
     - _SrcBlend: 1
-    - _StencilRef: 1
+    - _StencilRef: 2
     - _Surface: 0
+    - _WiggleDispAmt: 0.005
+    - _WiggleFreq: 200
+    - _WiggleScroll: 20
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:

@@ -10,6 +10,7 @@ public class GrabScreenFeature : ScriptableRendererFeature
     public class Settings
     {
         public string TextureName = "_GrabPassTransparent";
+        public RenderPassEvent PassEvent = RenderPassEvent.BeforeRenderingTransparents;
         public LayerMask LayerMask;
     }
 
@@ -23,7 +24,7 @@ public class GrabScreenFeature : ScriptableRendererFeature
         public GrabPass(Settings s)
         {
             settings = s;
-            renderPassEvent = RenderPassEvent.AfterRenderingTransparents;
+            renderPassEvent = settings.PassEvent;
             tempColorTarget.Init(settings.TextureName);
         }
 
@@ -67,7 +68,7 @@ public class GrabScreenFeature : ScriptableRendererFeature
         public RenderPass(Settings settings)
         {
             this.settings = settings;
-            renderPassEvent = RenderPassEvent.AfterRenderingTransparents + 1;
+            renderPassEvent = settings.PassEvent;
 
             m_ShaderTagIdList.Add(new ShaderTagId("SRPDefaultUnlit"));
             m_ShaderTagIdList.Add(new ShaderTagId("UniversalForward"));
@@ -108,6 +109,6 @@ public class GrabScreenFeature : ScriptableRendererFeature
         grabPass.Setup(renderer.cameraColorTarget);
 
         renderer.EnqueuePass(grabPass);
-        renderer.EnqueuePass(renderPass);
+        // renderer.EnqueuePass(renderPass);
     }
 }
