@@ -165,6 +165,7 @@ namespace Cards.Editor
             {
                 SerializedProperty content = _contentList.serializedProperty.GetArrayElementAtIndex(index);
                 SerializedProperty material = content.FindPropertyRelative("material");
+                SerializedProperty contentName = content.FindPropertyRelative("name");
 
                 Rect controlRect = new Rect(
                     rect.x + 10,
@@ -172,6 +173,8 @@ namespace Cards.Editor
                     rect.width * .9f,
                     EditorGUIUtility.singleLineHeight
                     );
+                
+                EditorGUI.LabelField(controlRect, contentName.stringValue, _strongStyle);
 
                 if (!active || material.objectReferenceValue is null)
                     return;

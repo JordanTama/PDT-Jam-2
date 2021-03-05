@@ -10,17 +10,43 @@ namespace Cards
         [SerializeField] private string description;
         [SerializeField] private List<CardLayer> layers = new List<CardLayer>();
 
-        public string MaterialDirectory => Application.dataPath + "Assets/Materials/Cards/" + name + "/";
+        [SerializeField] private string prevName; 
+
+        public string MaterialDirectory => "Assets/Materials/Cards/" + name + "/";
         
         private void OnEnable()
         {
-            description = "Write a description here...";
-            System.IO.Directory.CreateDirectory(MaterialDirectory);
+            System.IO.Directory.CreateDirectory(Application.dataPath + "/Materials/Cards/" + name);
+            prevName = name;
+            AssetDatabase.Refresh();
+        }
+
+        private void OnValidate()
+        {
+            if (prevName == name)
+                return;
+
+            foreach (CardLayer layer in layers)
+            {
+                foreach (Content content in layer.Contents)
+                {
+                    AssetDatabase.MoveAsset("Assets/Materials/Cards/" + prevName, "Assets/Materials/Cards/" + name);
+                }
+            }
+
+            System.IO.Directory.Delete(Application.dataPath + "/Materials/Cards/" + prevName);
+            
+            prevName = name;
+            AssetDatabase.Refresh();
         }
 
         private void OnDestroy()
         {
-            System.IO.Directory.Delete(MaterialDirectory, true);
+            foreach (CardLayer layer in layers)
+                layer.Destroy();
+            
+            System.IO.Directory.Delete(Application.dataPath + "/Materials/Cards/" + name);
+            AssetDatabase.Refresh();
         }
 
         public void AddLayer()
@@ -31,7 +57,9 @@ namespace Cards
 
         public void RemoveLayer(int index)
         {
+            layers[index].Destroy();
             layers.RemoveAt(index);
+            AssetDatabase.Refresh();
         }
 
         public void AddContent(int layerIndex)
@@ -42,6 +70,7 @@ namespace Cards
         public void RemoveContent(int layerIndex, int contentIndex)
         {
             layers[layerIndex].RemoveContent(contentIndex);
+            AssetDatabase.Refresh();
         }
 
         [Serializable]
@@ -51,6 +80,8 @@ namespace Cards
             
             [SerializeField] public string name;
             [SerializeField] private List<Content> contents = new List<Content>();
+
+            public Content[] Contents => contents.ToArray();
             
             public CardLayer(CardType card, string name)
             {
@@ -60,7 +91,8 @@ namespace Cards
 
             public void Destroy()
             {
-                
+                foreach (Content content in contents)
+                    content.Destroy();
             }
 
             public void AddContent()
@@ -79,17 +111,21 @@ namespace Cards
         
 
         [Serializable]
-        private class Content
+        public class Content
         {
             [SerializeField] private Material material;
             [SerializeField] private string name;
 
             [SerializeField] private string path;
 
+            public string Name => name;
+            public string Directory => path;
+            
             public void Initialize(CardType card, int index)
             {
                 material = new Material(AssetDatabase.LoadAssetAtPath<Shader>("Assets/Shaders/Card/Content.shader"));
-                path = card.MaterialDirectory + index;
+                name = material.GetHashCode().ToString();
+                path = card.MaterialDirectory + name + ".mat";
                 AssetDatabase.CreateAsset(material, path);
             }
 
