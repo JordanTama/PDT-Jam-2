@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Cards
@@ -8,11 +9,14 @@ namespace Cards
     {
         private readonly List<Material> _materials = new List<Material>();
 
-        private int _stencilRef = 0;
+        private StencilService _service;
+        private int _stencilRef;
+        
         private static readonly int StencilRefId = Shader.PropertyToID("_StencilRef");
 
+        
 
-        public int StencilRef
+        private int StencilRef
         {
             get => _stencilRef;
             set
@@ -25,23 +29,20 @@ namespace Cards
 
         private void Start()
         {
+            _service = ServiceLocator.ServiceLocator.Get<StencilService>();
             UpdateMaterialList();
-            
-            // TODO: Call to CardService to get a stencil value and assign to StencilRef...
-            // StencilRef = 
+
+            StencilRef = _service.GetStencilRef();
         }
 
 
         private void UpdateStencilRefs()
         {
-            foreach (Material mat in _materials)
-            {
-                if (mat.HasProperty(StencilRefId))
-                    mat.SetInt(StencilRefId, StencilRef);
-            }
+            foreach (var mat in _materials.Where(mat => mat.HasProperty(StencilRefId)))
+                mat.SetInt(StencilRefId, StencilRef);
         }
 
-        public void UpdateMaterialList()
+        private void UpdateMaterialList()
         {
             _materials.Clear();
             IterateChildrenRecursive(transform, _materials);
