@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dealer : MonoBehaviour
+public abstract class Dealer : MonoBehaviour
 {
     public enum DealerType
     {
