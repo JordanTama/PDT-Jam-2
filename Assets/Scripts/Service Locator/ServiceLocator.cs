@@ -27,6 +27,7 @@ namespace ServiceLocator
             
             // !!! REGISTER SERVICES HERE
             Register(new StencilService());
+            Register(new GameService());
             // !!!
         }
 
