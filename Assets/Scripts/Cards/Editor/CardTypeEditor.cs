@@ -18,7 +18,7 @@ namespace Cards.Editor
         private static GUIStyle _strongStyle;
         private static GUIStyle _layerListStyle;
 
-        private string[] layerNames;
+        private string[] _layerNames;
 
         private void OnEnable()
         {
@@ -45,9 +45,9 @@ namespace Cards.Editor
 
         private void RecalculateLayerNames()
         {
-            layerNames = new string[_layers.arraySize];
-            for (int i = 0; i < layerNames.Length; i++)
-                layerNames[i] = _layers.GetArrayElementAtIndex(i).FindPropertyRelative("name").stringValue;
+            _layerNames = new string[_layers.arraySize];
+            for (int i = 0; i < _layerNames.Length; i++)
+                _layerNames[i] = _layers.GetArrayElementAtIndex(i).FindPropertyRelative("name").stringValue;
         }
 
         public override void OnInspectorGUI()
