@@ -3,6 +3,11 @@
     Properties
     {
         _Noise ("Noise Texture", 2D) = "white" {}
+        _NoiseThreshold ("Noise Threshold", Range(0, 1)) = .5
+        _NoiseScroll ("Noise Scroll Speed", Float) = 1
+        _NoiseExponent ("Noise Exponent", Float) = 1
+        _NoiseOffset ("Noise Offset", Range(0, 1)) = 0
+        
         _Mask ("Mask Texture", 2D) = "white" {}
 		_Intensity ("Glitch Intensity", Range(0, 1)) = 1
         
@@ -51,6 +56,13 @@
                 float2 uv : TEXCOORD0;
                 float4 grab_pos : TEXCOORD1;
             };
+
+
+            sampler2D _Noise;
+            float _NoiseThreshold;
+            float _NoiseScroll;
+            float _NoiseExponent;
+            float _NoiseOffset;
             
             sampler2D _Mask;
             sampler2D _GrabPassTransparent;
@@ -89,37 +101,21 @@
             {
                 clip(tex2D(_Mask, i.uv) - 1);
 
+                float glitch = tex2D(_Noise, float2(_Time[0] * _NoiseScroll, _NoiseOffset));
+                glitch = (glitch + 1.0) / 2.0;
+                glitch = pow(glitch, _NoiseExponent);
+                glitch = glitch >= _NoiseThreshold ? 1 : 0;
+                
+
                 const float4 distortion_pos = float4(get_distortion(i.uv) - 0.5, 0.0, 1.0);
                 const float4 clip_space_distortion = UnityObjectToClipPos(distortion_pos);
                 float4 grab_distortion = ComputeGrabScreenPos(clip_space_distortion);
                 grab_distortion.xy /= grab_distortion.w;
 
                 const float2 grab_uv = i.grab_pos.xy / i.grab_pos.w;
-                const float2 uv = lerp(grab_uv, grab_distortion, _Intensity);
+                const float2 uv = lerp(grab_uv, grab_distortion, glitch * _Intensity);
                 
                 return tex2D(_GrabPassTransparent, uv);
-                
-                float4 distortionPos = float4(float2(0.5, 0.5) - 0.5, 0.0, 1.0);
-                float4 clipSpaceDistortion = UnityObjectToClipPos(distortionPos);
-                float4 grabDistortion = ComputeGrabScreenPos(clipSpaceDistortion);
-                grabDistortion.xy /= grabDistortion.w;
- 
-                float2 grabUV = i.grab_pos.xy / i.grab_pos.w;
-                grabUV = lerp(grabUV, grabDistortion, _Intensity);
- 
-                half4 col = tex2D(_GrabPassTransparent, grabUV);
-                return col;
-                
-                // float4 distortion_pos = float4(get_distortion(i.uv) - 0.5, 0.0, 1.0);
-                // float4 clip_space_distortion = UnityObjectToClipPos(distortion_pos);
-                // float4 grab_distortion = ComputeGrabScreenPos(clip_space_distortion);
-                // grab_distortion.xy /= grab_distortion.w;
-                //
-                // float2 grab_uv = i.grab_pos.xy / i.grab_pos.w;
-                // grab_uv = lerp(grab_uv, grab_distortion, _Intensity);
-                //
-                // float4 col = tex2D(_GrabPassTransparent, grab_uv);
-                // return float4(col.rgb, 0);
             }
             ENDCG
         }
