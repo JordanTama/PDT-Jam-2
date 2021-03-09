@@ -79,10 +79,10 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Intensity: 0.5
+    - _Intensity: 1
     - _Metallic: 0
     - _NoiseExponent: 4
-    - _NoiseOffset: 0.54
+    - _NoiseOffset: 0.882
     - _NoiseScroll: 10
     - _NoiseThreshold: 0.447
     - _OcclusionStrength: 1
