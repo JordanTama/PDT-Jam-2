@@ -33,7 +33,7 @@ public abstract class Dealer : MonoBehaviour
 
         gameService.RegisterDealer(dealerType, this);
 
-        deck.AddRange(startDeck.cards);
+        startDeck.cards.ForEach(card => deck.Add(Instantiate(card)));
 
         while (hand.Count < dealerSettings.cardsInHand && deck.Count > 0)
         {
