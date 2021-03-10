@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,16 +12,10 @@ public class Player : Dealer
         base.Start();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            EndTurn();
-        }   
-    }
-
     public override void StartTurn()
     {
         Debug.Log(dealerType + " takes their turn.");
+
+        OnStartTurn?.Invoke();
     }
 }

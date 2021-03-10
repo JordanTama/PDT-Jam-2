@@ -23,6 +23,8 @@ public class GameService : IService
     private Dealer currentDealer;
     private int turnsTaken = 0;
 
+    private bool gameEnded = false;
+
     public void RegisterDealer(Dealer.DealerType dealerType, Dealer dealer)
     {
         switch (dealerType)
@@ -90,16 +92,18 @@ public class GameService : IService
 
         if (turnsTaken >= maxTurnsPerDealer * 2)
         {
-            EndGame();
-        } else
+            EndGame("Max turns reached.");
+        } else if (!gameEnded)
         {
             currentDealer.StartTurn();
         }
     }
 
-    private void EndGame()
+    public void EndGame(string reason)
     {
-        Debug.Log("Game ends.");
+        Debug.Log("Game ends: " + reason);
+
+        gameEnded = true;
 
         onEndGame?.Invoke();
     }
