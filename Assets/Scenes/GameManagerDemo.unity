@@ -121,6 +121,55 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &398350381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 398350382}
+  - component: {fileID: 398350383}
+  m_Layer: 0
+  m_Name: Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &398350382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398350381}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2060632673}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &398350383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398350381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653d750f73e8ff9409ec65034fbb020f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2060632672}
+  cardPrefab: {fileID: 7696292055712863328, guid: 0eeabfbce8b1e1d4a9b17c8b139e8e90,
+    type: 3}
+  centrePosition: {x: 0, y: 0, z: 0}
+  distanceBetweenCards: 1.5
+  cardWidth: 1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca5336dbcd55a14c9961f7a5e6d9a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dealerSettings: {fileID: 11400000, guid: 886168fa94c5f0e4eae32cb2b446f01e, type: 2}
+  startDeck: {fileID: 11400000, guid: 80261818ac3d97b44b0f0f68b1084d90, type: 2}
 --- !u!4 &1321643828
 Transform:
   m_ObjectHideFlags: 0
@@ -369,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStarts: 1
-  maxTurnsPerDealer: 0
+  maxTurnsPerDealer: 4
 --- !u!4 &1369903535
 Transform:
   m_ObjectHideFlags: 0
@@ -413,6 +464,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a0b6b13b9e54c447916337bc2fbfd82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dealerSettings: {fileID: 11400000, guid: 886168fa94c5f0e4eae32cb2b446f01e, type: 2}
+  startDeck: {fileID: 11400000, guid: 80261818ac3d97b44b0f0f68b1084d90, type: 2}
 --- !u!4 &2060632673
 Transform:
   m_ObjectHideFlags: 0
@@ -423,7 +476,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 398350382}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
