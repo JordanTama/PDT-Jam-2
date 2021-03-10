@@ -5,7 +5,12 @@ using UnityEngine;
 
 public class TableController : MonoBehaviour
 {
+    [SerializeField] private Player player;
+    [SerializeField] private Patron patron;
+
     public Action<int> OnChangeValue;
+
+    private GameService gameService;
 
     private int Value
     {
@@ -17,13 +22,26 @@ public class TableController : MonoBehaviour
         {
             this.value = value;
 
-            OnChangeValue?.Invoke(value);
+            OnChangeValue?.Invoke(Value);
+            
+            if (Value >= player.targetValue)
+            {
+                gameService.EndGame("Player reached target value.");
+            } else if (Value <= patron.targetValue)
+            {
+                gameService.EndGame("Patron reached target value.");
+            }
         }
     }
 
     private int value;
 
     private List<Card> pile = new List<Card>();
+
+    private void Start()
+    {
+        gameService = ServiceLocator.ServiceLocator.Get<GameService>();
+    }
 
     public void PlayCard(Dealer dealer, Card card)
     {
