@@ -35,7 +35,7 @@ public abstract class Dealer : MonoBehaviour
 
         startDeck.cards.ForEach(card => deck.Add(Instantiate(card)));
 
-        while (hand.Count < dealerSettings.cardsInHand && deck.Count > 0)
+        while (hand.Count < dealerSettings.cardsInHand)
         {
             DrawCard();
         }
