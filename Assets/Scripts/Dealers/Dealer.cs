@@ -7,6 +7,7 @@ public abstract class Dealer : MonoBehaviour
 {
     [SerializeField] protected DealerSettings dealerSettings;
     [SerializeField] protected Deck startDeck;
+    [SerializeField] protected TableController tableController;
 
     public enum DealerType
     {
@@ -59,7 +60,7 @@ public abstract class Dealer : MonoBehaviour
     {
         hand.Remove(card);
 
-        // *** Inform the table that a card was played
+        tableController.PlayCard(this, card);
 
         Debug.Log(dealerType + " plays " + card.name);
 

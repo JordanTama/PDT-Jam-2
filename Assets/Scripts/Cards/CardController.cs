@@ -23,7 +23,6 @@ public class CardController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log(playable);
             if (playable)
             {
                 PlayCard();
