@@ -45,17 +45,22 @@ public class TableController : MonoBehaviour
 
     public void PlayCard(Dealer dealer, Card card)
     {
+        // Process Card Effects
+        ComboEffect(card);
+
         pile.Add(card);
 
-        Value = CalculateValue();
+        Value += card.value;
     }
 
-    public int CalculateValue()
+    private void ComboEffect(Card card)
     {
-        int sum = 0;
+        if (!card.hasComboEffect) return;
 
-        pile.ForEach(card => sum += card.value);
+        if (pile.Count == 0) return;
 
-        return sum;
+        if (pile[pile.Count - 1].value != card.cardValueToActivateCombo) return;
+
+        Value += card.valueToAddOnComboActivation;
     }
 }
