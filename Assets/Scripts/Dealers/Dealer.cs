@@ -15,6 +15,8 @@ public abstract class Dealer : MonoBehaviour
     }
     
     public GameService.Role role { get; set; }
+    public Action OnStartTurn;
+    public Action OnEndTurn;
     public Action<Card> OnDrawCard;
 
     protected DealerType dealerType;
@@ -27,8 +29,6 @@ public abstract class Dealer : MonoBehaviour
         gameService = ServiceLocator.ServiceLocator.Get<GameService>();
 
         gameService.RegisterDealer(dealerType, this);
-
-        Debug.Log(startDeck.cards.Count);
 
         deck.AddRange(startDeck.cards);
 
@@ -72,12 +72,16 @@ public abstract class Dealer : MonoBehaviour
     {
         Debug.Log(dealerType + " takes their turn.");
 
+        OnStartTurn?.Invoke();
+
         EndTurn();
     }
 
     protected void EndTurn()
     {
         Debug.Log(dealerType + " ends their turn.");
+
+        OnEndTurn?.Invoke();
 
         gameService.EndTurn();
     }

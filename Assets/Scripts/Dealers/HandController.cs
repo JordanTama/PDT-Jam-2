@@ -10,27 +10,30 @@ public class HandController : MonoBehaviour
     [SerializeField] private float distanceBetweenCards;
     [SerializeField] private float cardWidth;
 
-    private Dictionary<GameObject, Card> cards = new Dictionary<GameObject, Card>();
     private List<GameObject> cardGameObjects = new List<GameObject>();
+    private Dictionary<GameObject, Card> cards = new Dictionary<GameObject, Card>();
+    private Dictionary<GameObject, CardController> cardControllers = new Dictionary<GameObject, CardController>();
+    private bool cardsPlayable;
 
-    private void Start()
+    private void Awake()
     {
+        player.OnStartTurn += () => SetCardsPlayable(true);
+        player.OnEndTurn += () => SetCardsPlayable(false);
         player.OnDrawCard += CreateCard;
     }
 
     private void CreateCard(Card card)
     {
         GameObject newCardGameObject = Instantiate(cardPrefab, transform);
-
-        cards.Add(newCardGameObject, card);
-
-        cardGameObjects.Add(newCardGameObject);
-
         CardController newCardController = newCardGameObject.GetComponent<CardController>();
 
-        newCardController.card = card;
+        cardGameObjects.Add(newCardGameObject);
+        cards.Add(newCardGameObject, card);
+        cardControllers.Add(newCardGameObject, newCardController);
 
+        newCardController.card = card;
         newCardController.OnCardPlayed += PlayCard;
+        newCardController.playable = cardsPlayable;
 
         RepositionCards();
     }
@@ -41,9 +44,9 @@ public class HandController : MonoBehaviour
 
         player.PlayCard(cards[cardGameObject]);
 
-        cards.Remove(cardGameObject);
-
         cardGameObjects.Remove(cardGameObject);
+        cards.Remove(cardGameObject);
+        cardControllers.Remove(cardGameObject);
 
         RepositionCards();
     }
@@ -59,6 +62,16 @@ public class HandController : MonoBehaviour
             float centeringOffset = (distanceBetweenCards / 2) * (cardGameObjects.Count - 1);
 
             cardGameObject.transform.position = transform.position + Vector3.right * (spacingOffset - centeringOffset);
+        }
+    }
+
+    private void SetCardsPlayable(bool playable)
+    {
+        cardsPlayable = playable;
+
+        foreach (KeyValuePair<GameObject, CardController> item in cardControllers)
+        {
+            item.Value.playable = playable;
         }
     }
 }

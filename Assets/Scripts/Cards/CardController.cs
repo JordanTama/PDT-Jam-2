@@ -8,6 +8,8 @@ public class CardController : MonoBehaviour
     public Action<GameObject> OnCardPlayed;
     public Card card;
 
+    public bool playable;
+
     private new MeshRenderer renderer;
 
     private void Start()
@@ -21,7 +23,11 @@ public class CardController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            PlayCard();
+            Debug.Log(playable);
+            if (playable)
+            {
+                PlayCard();
+            }
         }
     }
 

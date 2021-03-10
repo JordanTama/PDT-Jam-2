@@ -15,5 +15,7 @@ public class Player : Dealer
     public override void StartTurn()
     {
         Debug.Log(dealerType + " takes their turn.");
+
+        OnStartTurn?.Invoke();
     }
 }
