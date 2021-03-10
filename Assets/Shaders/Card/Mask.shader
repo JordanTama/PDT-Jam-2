@@ -76,10 +76,10 @@
 
             	float2 screen_uv = i.screen_position.xy / i.screen_position.w;
 
-            	float aspect = _ScreenParams.x / _ScreenParams.y;
+            	const float aspect = _ScreenParams.x / _ScreenParams.y;
             	screen_uv.x *= aspect;
             	
-            	float dissolve_guide = tex2D(_Dissolve, _DissolveScale * screen_uv).r;
+            	const float dissolve_guide = tex2D(_Dissolve, _DissolveScale * screen_uv).r;
             	
             	const float dis = (_DissolveAmt * 2) - 1;
             	const float clip_value = col.a - (dissolve_guide + dis);
