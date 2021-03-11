@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5658f55bb6d2534bb8894aa1e0212f4, type: 3}
+  m_Name: Jack
+  m_EditorClassIdentifier: 
+  color: {r: 1, g: 1, b: 1, a: 0}
+  content:
+  - material: {fileID: 2100000, guid: f778de35f0bb4394da3e45992270792b, type: 2}
+    depth: 0
+  - material: {fileID: 2100000, guid: 4d16f0614835d6d489ab50025a7bb6cf, type: 2}
+    depth: 0
+  - material: {fileID: 2100000, guid: 0b45b85ce4a78ed42a8e4306d7cfa3c6, type: 2}
+    depth: 0.025
+  - material: {fileID: 2100000, guid: b6b14720a0770a34da266c43dd3e5df1, type: 2}
+    depth: 0.025
+  - material: {fileID: 2100000, guid: 7d38d946330b8c9439af82d7551459a2, type: 2}
+    depth: 0.025
+  - material: {fileID: 2100000, guid: 9d1546b7eae559b479190774c31e55dd, type: 2}
+    depth: 0.05
+  - material: {fileID: 2100000, guid: 1803da78a54a4834fabf02f889056366, type: 2}
+    depth: 0.075
+  - material: {fileID: 2100000, guid: 79df0548947a80f4f95b4cfc5aa1593f, type: 2}
+    depth: 0.075
+  - material: {fileID: 2100000, guid: 7a042b375e6f52b41aa6198a7992a6ef, type: 2}
+    depth: 0.1

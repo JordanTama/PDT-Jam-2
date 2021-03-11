@@ -43,5 +43,12 @@ public class Card : ScriptableObject
                 turnsUntilCardExpires--;
             }
         }
+    public Content[] content;
+
+    [Serializable]
+    public struct Content
+    {
+        public Material material;
+        public float depth;
     }
 }
