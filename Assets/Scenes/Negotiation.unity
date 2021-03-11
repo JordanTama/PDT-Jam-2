@@ -5283,8 +5283,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f614fbea164235f47a3363be951404a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canPlay: 1
+  mask:
+    serializedVersion: 2
+    m_Bits: 4096
   spread: 0.2
-  depthGap: 0.03
+  depthGap: 0.04
+  hoverDistance: 0.2
   cardPrefab: {fileID: 1673772668202488782, guid: 2828d1e201f4833489da26c3bb869d76,
     type: 3}
   startingHand:
