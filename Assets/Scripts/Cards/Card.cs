@@ -20,6 +20,8 @@ public class Card : ScriptableObject
     public int turnsUntilCardExpires;
     public int valueDecay;
     public Action<Card> OnExpiry;
+    
+    public Content[] content;
 
     public bool hasMarkupEffect;
     public float markupMultiplier;
@@ -46,5 +48,12 @@ public class Card : ScriptableObject
                 turnsUntilCardExpires--;
             }
         }
+    }
+
+    [Serializable]
+    public struct Content
+    {
+        public Material material;
+        public float depth;
     }
 }
