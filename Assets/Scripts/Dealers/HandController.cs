@@ -11,13 +11,14 @@ public class HandController : MonoBehaviour
     [SerializeField] private float cardWidth;
 
     private List<GameObject> cardGameObjects = new List<GameObject>();
-    private Dictionary<GameObject, Card> cards = new Dictionary<GameObject, Card>();
-    private Dictionary<GameObject, CardController> cardControllers = new Dictionary<GameObject, CardController>();
+    private Dictionary<Card, GameObject> cards = new Dictionary<Card, GameObject>();
     private bool cardsPlayable;
+    private List<Card> expiredCards = new List<Card>();
 
     private void Awake()
     {
         player.OnStartTurn += () => SetCardsPlayable(true);
+        player.OnStartTurn += CardsStartTurn;
         player.OnEndTurn += () => SetCardsPlayable(false);
         player.OnDrawCard += CreateCard;
     }
@@ -28,27 +29,22 @@ public class HandController : MonoBehaviour
         CardController newCardController = newCardGameObject.GetComponent<CardController>();
 
         cardGameObjects.Add(newCardGameObject);
-        cards.Add(newCardGameObject, card);
-        cardControllers.Add(newCardGameObject, newCardController);
+        cards.Add(card, newCardGameObject);
 
         newCardController.card = card;
-        newCardController.OnCardPlayed += PlayCard;
-        newCardController.playable = cardsPlayable;
+
+        card.OnPlayed += PlayCard;
+        card.playable = cardsPlayable;
+        card.OnExpiry += thisCard => expiredCards.Add(thisCard);
 
         RepositionCards();
     }
 
-    private void PlayCard(GameObject cardGameObject)
+    private void PlayCard(Card card)
     {
-        Destroy(cardGameObject);
+        player.PlayCard(card);
 
-        player.PlayCard(cards[cardGameObject]);
-
-        cardGameObjects.Remove(cardGameObject);
-        cards.Remove(cardGameObject);
-        cardControllers.Remove(cardGameObject);
-
-        RepositionCards();
+        RemoveCard(card);
     }
 
     private void RepositionCards()
@@ -69,9 +65,41 @@ public class HandController : MonoBehaviour
     {
         cardsPlayable = playable;
 
-        foreach (KeyValuePair<GameObject, CardController> item in cardControllers)
+        foreach (KeyValuePair<Card, GameObject> item in cards)
         {
-            item.Value.playable = playable;
+            item.Key.playable = playable;
         }
+    }
+
+    private void CardsStartTurn()
+    {
+        foreach (KeyValuePair<Card, GameObject> item in cards)
+        {
+            item.Key.StartTurn();
+        }
+
+        RemoveExpiredCards();
+    }
+
+    private void RemoveCard(Card card)
+    {
+        GameObject cardGameObject = cards[card];
+
+        Destroy(cardGameObject);
+
+        cardGameObjects.Remove(cardGameObject);
+        cards.Remove(card);
+
+        RepositionCards();
+    }
+
+    private void RemoveExpiredCards()
+    {
+        foreach (Card card in expiredCards)
+        {
+            RemoveCard(card);
+        }
+
+        expiredCards.Clear();
     }
 }

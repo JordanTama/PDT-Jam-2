@@ -4,11 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CardController : MonoBehaviour
-{
-    public Action<GameObject> OnCardPlayed;
+{    
     public Card card;
-
-    public bool playable;
 
     private new MeshRenderer renderer;
 
@@ -23,15 +20,7 @@ public class CardController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (playable)
-            {
-                PlayCard();
-            }
+             card.PlayCard();
         }
-    }
-
-    private void PlayCard()
-    {
-        OnCardPlayed?.Invoke(gameObject);
     }
 }
