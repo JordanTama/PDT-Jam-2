@@ -71,6 +71,6 @@ public class TableController : MonoBehaviour
 
         if (pile.Count == 0) return;
 
-        Value += (int) Math.Floor(card.markupMultiplier * pile[pile.Count - 2].value);
+        Value += (int) Math.Floor(card.markupMultiplier * pile[pile.Count - 1].value * 2);
     }
 }
