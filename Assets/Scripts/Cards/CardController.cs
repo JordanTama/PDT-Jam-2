@@ -11,7 +11,7 @@ public class CardController : MonoBehaviour
     {
         renderer = GetComponent<MeshRenderer>();
 
-        renderer.material.SetColor("_BaseColor", card.color);
+        //renderer.material.SetColor("_BaseColor", card.color);
     }
 
     private void OnMouseOver()
