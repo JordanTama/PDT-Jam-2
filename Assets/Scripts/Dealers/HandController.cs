@@ -12,15 +12,15 @@ public class HandController : MonoBehaviour
 
     private List<GameObject> cardGameObjects = new List<GameObject>();
     private Dictionary<Card, GameObject> cards = new Dictionary<Card, GameObject>();
-    private bool cardsPlayable;
-    private List<Card> expiredCards = new List<Card>();
 
-    private void Awake()
+    private Hand hand;
+
+    private void Start()
     {
-        player.OnStartTurn += () => SetCardsPlayable(true);
-        player.OnStartTurn += CardsStartTurn;
-        player.OnEndTurn += () => SetCardsPlayable(false);
-        player.OnDrawCard += CreateCard;
+        hand = player.hand;
+
+        hand.OnRemoveCard += card => RemoveCard(card);
+        hand.OnDrawCard += card => CreateCard(card);
     }
 
     private void CreateCard(Card card)
@@ -33,18 +33,7 @@ public class HandController : MonoBehaviour
 
         newCardController.card = card;
 
-        card.OnPlayed += PlayCard;
-        card.playable = cardsPlayable;
-        card.OnExpiry += thisCard => expiredCards.Add(thisCard);
-
         RepositionCards();
-    }
-
-    private void PlayCard(Card card)
-    {
-        player.PlayCard(card);
-
-        RemoveCard(card);
     }
 
     private void RepositionCards()
@@ -61,26 +50,6 @@ public class HandController : MonoBehaviour
         }
     }
 
-    private void SetCardsPlayable(bool playable)
-    {
-        cardsPlayable = playable;
-
-        foreach (KeyValuePair<Card, GameObject> item in cards)
-        {
-            item.Key.playable = playable;
-        }
-    }
-
-    private void CardsStartTurn()
-    {
-        foreach (KeyValuePair<Card, GameObject> item in cards)
-        {
-            item.Key.StartTurn();
-        }
-
-        RemoveExpiredCards();
-    }
-
     private void RemoveCard(Card card)
     {
         GameObject cardGameObject = cards[card];
@@ -91,15 +60,5 @@ public class HandController : MonoBehaviour
         cards.Remove(card);
 
         RepositionCards();
-    }
-
-    private void RemoveExpiredCards()
-    {
-        foreach (Card card in expiredCards)
-        {
-            RemoveCard(card);
-        }
-
-        expiredCards.Clear();
     }
 }

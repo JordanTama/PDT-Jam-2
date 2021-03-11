@@ -16,6 +16,8 @@ public class Player : Dealer
     {
         Debug.Log(dealerType + " takes their turn.");
 
+        DrawCards();
+
         OnStartTurn?.Invoke();
     }
 }

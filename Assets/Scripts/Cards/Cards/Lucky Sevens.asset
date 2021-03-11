@@ -10,11 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5658f55bb6d2534bb8894aa1e0212f4, type: 3}
-  m_Name: New Card
+  m_Name: Lucky Sevens
   m_EditorClassIdentifier: 
-  name: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  value: 0
-  comboEffect: 0
-  cardValueToActivateCombo: 0
-  valueToAddOnActivation: 0
+  name: Lucky Sevens
+  color: {r: 0, g: 1, b: 1, a: 0}
+  value: 7
+  playable: 0
+  hasComboEffect: 1
+  cardValueToActivateCombo: 7
+  valueToAddOnComboActivation: 7
+  hasExpiry: 0
+  turnsUntilCardExpires: 0
+  valueDecay: 0

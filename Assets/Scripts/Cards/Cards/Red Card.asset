@@ -14,4 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Red
   color: {r: 1, g: 0, b: 0, a: 0}
-  value: 3
+  value: 7
+  playable: 0
+  hasComboEffect: 0
+  cardValueToActivateCombo: 0
+  valueToAddOnComboActivation: 0
+  hasExpiry: 0
+  turnsUntilCardExpires: 0
+  valueDecay: 0

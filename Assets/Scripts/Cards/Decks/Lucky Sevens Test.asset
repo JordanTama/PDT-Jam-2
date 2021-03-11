@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe444076596703a4cb4bd9e29a87d3db, type: 3}
-  m_Name: Test Deck
+  m_Name: Lucky Sevens Test
   m_EditorClassIdentifier: 
   cards:
-  - {fileID: 11400000, guid: 10356fd31e4c931409d21a073dc14ac3, type: 2}
-  - {fileID: 11400000, guid: 0c6d5da4a309d9144b2cc4babc4bda75, type: 2}
-  - {fileID: 11400000, guid: 0c6d5da4a309d9144b2cc4babc4bda75, type: 2}
-  - {fileID: 11400000, guid: bf769c63b063bab4b9443a3a2b2c0f1d, type: 2}
   - {fileID: 11400000, guid: 191bafadf3a39324990d2817174a9414, type: 2}
-  - {fileID: 11400000, guid: bf769c63b063bab4b9443a3a2b2c0f1d, type: 2}
-  - {fileID: 11400000, guid: bf769c63b063bab4b9443a3a2b2c0f1d, type: 2}
+  - {fileID: 11400000, guid: 405a3f6d022e30646bfaf4149755d0ca, type: 2}
+  - {fileID: 11400000, guid: 0c6d5da4a309d9144b2cc4babc4bda75, type: 2}
+  - {fileID: 11400000, guid: 0c6d5da4a309d9144b2cc4babc4bda75, type: 2}
+  - {fileID: 11400000, guid: 0c6d5da4a309d9144b2cc4babc4bda75, type: 2}
+  - {fileID: 11400000, guid: 0c6d5da4a309d9144b2cc4babc4bda75, type: 2}

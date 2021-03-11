@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5658f55bb6d2534bb8894aa1e0212f4, type: 3}
   m_Name: Fast Sell
   m_EditorClassIdentifier: 
-  name: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  value: 0
+  name: Fast Sell
+  color: {r: 1, g: 1, b: 0, a: 0}
+  value: 5
   playable: 0
   hasComboEffect: 0
   cardValueToActivateCombo: 0
   valueToAddOnComboActivation: 0
-  hasExpiry: 0
-  turnsUntilCardExpires: 0
+  hasExpiry: 1
+  turnsUntilCardExpires: 1
   valueDecay: 0
