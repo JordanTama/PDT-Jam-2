@@ -74,6 +74,8 @@
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
 
+            	clip(col.a - 1.0);
+            	
             	float2 screen_uv = i.screen_position.xy / i.screen_position.w;
 
             	const float aspect = _ScreenParams.x / _ScreenParams.y;

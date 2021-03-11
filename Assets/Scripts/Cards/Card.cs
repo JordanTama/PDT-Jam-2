@@ -1,10 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 [CreateAssetMenu]
 public class Card : ScriptableObject
 {
-    public new string name;
-    public Color color;
+    public Content[] content;
+
+    [Serializable]
+    public struct Content
+    {
+        public Material material;
+        public float depth;
+    }
 }

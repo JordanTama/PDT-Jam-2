@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CardController : MonoBehaviour
@@ -14,7 +12,7 @@ public class CardController : MonoBehaviour
     {
         renderer = GetComponent<MeshRenderer>();
 
-        renderer.material.SetColor("_BaseColor", card.color);
+        // renderer.material.SetColor("_BaseColor", card.color);
     }
 
     private void OnMouseOver()
