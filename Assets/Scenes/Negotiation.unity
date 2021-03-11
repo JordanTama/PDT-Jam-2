@@ -5536,11 +5536,7 @@ MonoBehaviour:
   cardPrefab: {fileID: 1673772668202488782, guid: 2828d1e201f4833489da26c3bb869d76,
     type: 3}
   startingHand:
-  - {fileID: 11400000, guid: 5c3871a7b5044f742847b95008aeff5c, type: 2}
-  - {fileID: 11400000, guid: 5c3871a7b5044f742847b95008aeff5c, type: 2}
-  - {fileID: 11400000, guid: 5c3871a7b5044f742847b95008aeff5c, type: 2}
-  - {fileID: 11400000, guid: 5c3871a7b5044f742847b95008aeff5c, type: 2}
-  - {fileID: 11400000, guid: 5c3871a7b5044f742847b95008aeff5c, type: 2}
+  - {fileID: 11400000, guid: 7f9fbd3e0f840b94f88c1e0eb9a5d0cf, type: 2}
 --- !u!4 &1110426053
 Transform:
   m_ObjectHideFlags: 0
