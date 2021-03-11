@@ -65,7 +65,7 @@ public class Hand
         }
     }
 
-    private void PlayCard(Card card)
+    public void PlayCard(Card card)
     {
         RemoveCard(card);
 

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe444076596703a4cb4bd9e29a87d3db, type: 3}
+  m_Name: Patron Deck
+  m_EditorClassIdentifier: 
+  cards:
+  - {fileID: 11400000, guid: 95ffe4f4418be8e48a6aa2dc40c0515c, type: 2}
+  - {fileID: 11400000, guid: b0e309833f9f13a4da0515ac2bea4f3c, type: 2}
+  - {fileID: 11400000, guid: 1a28c031ab904344b9120813ab56b33a, type: 2}
+  - {fileID: 11400000, guid: 95ffe4f4418be8e48a6aa2dc40c0515c, type: 2}
+  - {fileID: 11400000, guid: b0e309833f9f13a4da0515ac2bea4f3c, type: 2}
+  - {fileID: 11400000, guid: 1a28c031ab904344b9120813ab56b33a, type: 2}
+  - {fileID: 11400000, guid: b0e309833f9f13a4da0515ac2bea4f3c, type: 2}
+  - {fileID: 11400000, guid: 95ffe4f4418be8e48a6aa2dc40c0515c, type: 2}
+  - {fileID: 11400000, guid: 1a28c031ab904344b9120813ab56b33a, type: 2}
