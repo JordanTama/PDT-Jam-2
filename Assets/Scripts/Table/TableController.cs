@@ -47,6 +47,7 @@ public class TableController : MonoBehaviour
     {
         // Process Card Effects
         ComboEffect(card);
+        MarkupEffect(card);
 
         pile.Add(card);
 
@@ -62,5 +63,14 @@ public class TableController : MonoBehaviour
         if (pile[pile.Count - 1].value != card.cardValueToActivateCombo) return;
 
         Value += card.valueToAddOnComboActivation;
+    }
+
+    private void MarkupEffect(Card card)
+    {
+        if (!card.hasMarkupEffect) return;
+
+        if (pile.Count == 0) return;
+
+        Value += (int) Math.Floor(card.markupMultiplier * pile[pile.Count - 2].value);
     }
 }

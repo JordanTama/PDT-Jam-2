@@ -21,6 +21,9 @@ public class Card : ScriptableObject
     public int valueDecay;
     public Action<Card> OnExpiry;
 
+    public bool hasMarkupEffect;
+    public float markupMultiplier;
+
     public void PlayCard()
     {
         if (playable)
