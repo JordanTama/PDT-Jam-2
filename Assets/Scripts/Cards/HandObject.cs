@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using Cards;
 using UnityEngine;
 
@@ -6,6 +7,9 @@ public class HandObject : MonoBehaviour
 {
     public bool canPlay;
 
+    [SerializeField] private Animator playerAnimator;
+    [SerializeField] private float animationDelay;
+    [SerializeField] private StackObject stackObject;
     [SerializeField] private LayerMask mask;
     [SerializeField] private float spread;
     [SerializeField] private float depthGap;
@@ -130,7 +134,17 @@ public class HandObject : MonoBehaviour
     {
         DestroyImmediate(card.gameObject);
         cards.Remove(card);
-        
+
+        StartCoroutine(PlaceOnStack(animationDelay, card.Card));
+        playerAnimator.SetTrigger("Play");
+
         hasChanged = true;
+    }
+
+    private IEnumerator PlaceOnStack(float delay, Card card)
+    {
+        yield return new WaitForSeconds(delay);
+        
+        stackObject.Add(card);
     }
 }

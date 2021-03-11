@@ -16,6 +16,7 @@ namespace Cards
         private int _stencilRef;
 
         private Collider _collider;
+        private Animator _animator;
         
         private static readonly int StencilRefId = Shader.PropertyToID("_StencilRef");
         
@@ -50,8 +51,16 @@ namespace Cards
 
             StencilRef = _service.GetStencilRef();
 
-            if (!TryGetComponent(out _collider))
-                Debug.Log("No Collider attached.");
+            TryGet(out _collider);
+            TryGet(out _animator);
+
+            Appear();
+        }
+
+        private void TryGet<T>(out T component) where T : Component
+        {
+            if (!TryGetComponent(out component))
+                Debug.Log($"No {typeof(T).Name} attached.");
         }
 
         #endregion
@@ -110,6 +119,21 @@ namespace Cards
             return _collider.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity);
         }
         
+        #endregion
+        
+        
+        #region Animation Management
+
+        private void Appear()
+        {
+            _animator.SetTrigger("Appear");
+        }
+
+        private void Disappear()
+        {
+            _animator.SetTrigger("Disappear");
+        }
+
         #endregion
     }
 }
