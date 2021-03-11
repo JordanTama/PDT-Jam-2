@@ -20,6 +20,8 @@ public class Card : ScriptableObject
     public int turnsUntilCardExpires;
     public int valueDecay;
     public Action<Card> OnExpiry;
+    
+    public Content[] content;
 
     public void PlayCard()
     {
@@ -43,7 +45,7 @@ public class Card : ScriptableObject
                 turnsUntilCardExpires--;
             }
         }
-    public Content[] content;
+    }
 
     [Serializable]
     public struct Content

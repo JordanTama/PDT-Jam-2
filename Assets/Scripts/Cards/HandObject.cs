@@ -2,8 +2,7 @@
 using Cards;
 using UnityEngine;
 
-// TODO: Recreate colliders corresponding to each card when adjusting.
-public class Hand : MonoBehaviour
+public class HandObject : MonoBehaviour
 {
     public bool canPlay;
 
