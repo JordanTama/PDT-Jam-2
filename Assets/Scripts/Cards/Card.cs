@@ -20,7 +20,8 @@ public class Card : ScriptableObject
     public int turnsUntilCardExpires;
     public int valueDecay;
     public Action<Card> OnExpiry;
-    
+
+    public string description;
     public Content[] content;
 
     public bool hasMarkupEffect;

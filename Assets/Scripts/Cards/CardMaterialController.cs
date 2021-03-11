@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Cards
 {
@@ -9,6 +10,9 @@ namespace Cards
         [SerializeField] private Card card;
         [SerializeField] private Transform contentParent;
         [SerializeField] private GameObject contentPrefab;
+        [SerializeField] private Text titleText;
+        [SerializeField] private Text valueText;
+        [SerializeField] private Text descriptionText;
 
         private readonly List<Material> _materials = new List<Material>();
 
@@ -16,9 +20,12 @@ namespace Cards
         private int _stencilRef;
 
         private Collider _collider;
+        private Animator _animator;
         
         private static readonly int StencilRefId = Shader.PropertyToID("_StencilRef");
-        
+        private static readonly int Appear1 = Animator.StringToHash("Appear");
+        private static readonly int Disappear1 = Animator.StringToHash("Disappear");
+
 
         private int StencilRef
         {
@@ -50,8 +57,16 @@ namespace Cards
 
             StencilRef = _service.GetStencilRef();
 
-            if (!TryGetComponent(out _collider))
-                Debug.Log("No Collider attached.");
+            TryGet(out _collider);
+            TryGet(out _animator);
+
+            Appear();
+        }
+
+        private void TryGet<T>(out T component) where T : Component
+        {
+            if (!TryGetComponent(out component))
+                Debug.Log($"No {typeof(T).Name} attached.");
         }
 
         #endregion
@@ -75,7 +90,11 @@ namespace Cards
                 rend.material = content.material;
                 newContent.transform.Translate(transform.forward * content.depth, Space.World);
             }
-            
+
+            titleText.text = card.name;
+            valueText.text = card.value.ToString();
+            descriptionText.text = card.description;
+
             UpdateMaterialList();
         }
         
@@ -110,6 +129,21 @@ namespace Cards
             return _collider.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity);
         }
         
+        #endregion
+        
+        
+        #region Animation Management
+
+        private void Appear()
+        {
+            _animator.SetTrigger(Appear1);
+        }
+
+        private void Disappear()
+        {
+            _animator.SetTrigger(Disappear1);
+        }
+
         #endregion
     }
 }
