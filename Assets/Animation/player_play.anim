@@ -32,24 +32,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.42857143
         value: 0.5
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.85714287
-        value: 0
-        inSlope: 0
-        outSlope: 0
+        inSlope: 1
+        outSlope: 1
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -78,9 +69,7 @@ AnimationClip:
     - time: 0.71428573
       value: {fileID: 21300000, guid: debe582a5e54a79498b396743280a9f7, type: 3}
     - time: 0.85714287
-      value: {fileID: 21300000, guid: f1374bb11fbcdb44da48d95a7b2b7bac, type: 3}
-    - time: 1
-      value: {fileID: 21300000, guid: f1374bb11fbcdb44da48d95a7b2b7bac, type: 3}
+      value: {fileID: 21300000, guid: 7acf787a7dd933548995594e7ee4b4cd, type: 3}
     attribute: m_Sprite
     path: Arm
     classID: 212
@@ -94,10 +83,6 @@ AnimationClip:
       value: {fileID: 21300000, guid: 93e3f9c122d447a41be0ece2186e9ad7, type: 3}
     - time: 0.42857143
       value: {fileID: 21300000, guid: 73eae27f0f9461249a305f1a3e916590, type: 3}
-    - time: 0.85714287
-      value: {fileID: 21300000, guid: 5ddd04b46e6047b459e0ef043ea60fdd, type: 3}
-    - time: 1
-      value: {fileID: 21300000, guid: 5ddd04b46e6047b459e0ef043ea60fdd, type: 3}
     attribute: m_Sprite
     path: Card
     classID: 212
@@ -137,20 +122,17 @@ AnimationClip:
     - {fileID: 21300000, guid: 6bee14a9b21a416458145842b50679bc, type: 3}
     - {fileID: 21300000, guid: f73305516c9ed0e48adca3c9a5db4fbf, type: 3}
     - {fileID: 21300000, guid: debe582a5e54a79498b396743280a9f7, type: 3}
-    - {fileID: 21300000, guid: f1374bb11fbcdb44da48d95a7b2b7bac, type: 3}
-    - {fileID: 21300000, guid: f1374bb11fbcdb44da48d95a7b2b7bac, type: 3}
+    - {fileID: 21300000, guid: 7acf787a7dd933548995594e7ee4b4cd, type: 3}
     - {fileID: 21300000, guid: 5ddd04b46e6047b459e0ef043ea60fdd, type: 3}
     - {fileID: 21300000, guid: 1eee622b220ba4d489b5862de56c5e4d, type: 3}
     - {fileID: 21300000, guid: 93e3f9c122d447a41be0ece2186e9ad7, type: 3}
     - {fileID: 21300000, guid: 73eae27f0f9461249a305f1a3e916590, type: 3}
-    - {fileID: 21300000, guid: 5ddd04b46e6047b459e0ef043ea60fdd, type: 3}
-    - {fileID: 21300000, guid: 5ddd04b46e6047b459e0ef043ea60fdd, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.0142857
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -181,24 +163,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.42857143
         value: 0.5
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.85714287
-        value: 0
-        inSlope: 0
-        outSlope: 0
+        inSlope: 1
+        outSlope: 1
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
