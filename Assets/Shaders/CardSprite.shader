@@ -96,6 +96,8 @@
 			fixed4 frag(v2f i) : SV_Target
 			{
 				fixed4 col = SampleSpriteTexture (i.texcoord) * i.color;
+
+				clip(col.a - 0.7);
 				
 				float2 screen_uv = i.screen_pos.xy / i.screen_pos.w;
 
