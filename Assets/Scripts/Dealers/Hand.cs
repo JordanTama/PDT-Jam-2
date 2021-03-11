@@ -83,7 +83,10 @@ public class Hand
     {
         foreach (Card card in expiredCards)
         {
-            RemoveCard(card);
+            if (cards.Contains(card))
+            {
+                RemoveCard(card);
+            }
         }
 
         expiredCards.Clear();

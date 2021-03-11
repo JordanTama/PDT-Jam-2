@@ -771,9 +771,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dealerSettings: {fileID: 11400000, guid: 886168fa94c5f0e4eae32cb2b446f01e, type: 2}
-  startDeck: {fileID: 11400000, guid: 80261818ac3d97b44b0f0f68b1084d90, type: 2}
+  startDeck: {fileID: 11400000, guid: 8e0db0b2aef5b3b48be38deb6c6cf307, type: 2}
   tableController: {fileID: 1719814399}
-  targetValue: 10
+  targetValue: 30
 --- !u!4 &2060632673
 Transform:
   m_ObjectHideFlags: 0
