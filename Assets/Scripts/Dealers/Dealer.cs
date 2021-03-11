@@ -30,6 +30,8 @@ public abstract class Dealer : MonoBehaviour
     {
         startDeck.cards.ForEach(card => deck.Add(Instantiate(card)));
 
+        ShuffleDeck();
+
         hand = new Hand(this, deck);
     }
 
@@ -75,5 +77,16 @@ public abstract class Dealer : MonoBehaviour
         OnEndTurn?.Invoke();
 
         gameService.EndTurn();
+    }
+
+    private void ShuffleDeck()
+    {
+        for (int i = 0; i < deck.Count; i++)
+        {
+            Card temp = deck[i];
+            int randomIndex = UnityEngine.Random.Range(i, deck.Count);
+            deck[i] = deck[randomIndex];
+            deck[randomIndex] = temp;
+        }
     }
 }
