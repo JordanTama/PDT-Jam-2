@@ -133,7 +133,7 @@ namespace Cards
 
         public bool Intersects(Ray ray)
         {
-            return _collider.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity);
+            return _collider && _collider.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity);
         }
         
         #endregion
