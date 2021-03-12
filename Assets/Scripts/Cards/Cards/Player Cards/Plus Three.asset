@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5658f55bb6d2534bb8894aa1e0212f4, type: 3}
-  m_Name: Minus Three
+  m_Name: Plus Three
   m_EditorClassIdentifier: 
-  name: Minus 3
-  color: {r: 0.56078434, g: 0.5686275, b: 0, a: 0}
-  value: -3
+  name: Plus Three
+  color: {r: 0, g: 1, b: 0, a: 0}
+  value: 3
   playable: 0
   hasComboEffect: 0
   cardValueToActivateCombo: 0
@@ -22,3 +22,7 @@ MonoBehaviour:
   hasExpiry: 0
   turnsUntilCardExpires: 0
   valueDecay: 0
+  description: 
+  content: []
+  hasMarkupEffect: 0
+  markupMultiplier: 0
