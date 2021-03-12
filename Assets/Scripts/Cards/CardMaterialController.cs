@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -62,6 +63,12 @@ namespace Cards
             TryGet(out _animator);
 
             Appear();
+        }
+
+        private void LateUpdate()
+        {
+            expiryText.text = card.hasExpiry ? card.turnsUntilCardExpires.ToString() : "";
+            valueText.text = card.value.ToString();
         }
 
         private void TryGet<T>(out T component) where T : Component

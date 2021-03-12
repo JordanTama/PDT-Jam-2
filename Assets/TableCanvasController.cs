@@ -42,6 +42,7 @@ public class TableCanvasController : MonoBehaviour
     {
         yield return new WaitForSeconds(restartTime);
 
+        ServiceLocator.ServiceLocator.Initialize();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

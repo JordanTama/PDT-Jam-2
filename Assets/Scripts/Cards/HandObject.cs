@@ -136,6 +136,11 @@ public class HandObject : MonoBehaviour
         controller.Card = card;
 
         cards.Add(controller);
+        card.OnExpiry += card1 =>
+        {
+            cards.Remove(controller);
+            DestroyImmediate(controller.gameObject);
+        };
 
         hasChanged = true;
     }
