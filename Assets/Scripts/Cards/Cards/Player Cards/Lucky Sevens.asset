@@ -17,8 +17,12 @@ MonoBehaviour:
   value: 7
   playable: 0
   hasComboEffect: 1
-  cardValueToActivateCombo: 7
+  cardValueToActivateCombo: -7
   valueToAddOnComboActivation: 7
   hasExpiry: 0
   turnsUntilCardExpires: 0
   valueDecay: 0
+  description: Play on a -7 to add 7.
+  content: []
+  hasMarkupEffect: 0
+  markupMultiplier: 0
