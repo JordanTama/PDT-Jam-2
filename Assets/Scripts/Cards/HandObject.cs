@@ -7,6 +7,7 @@ public class HandObject : MonoBehaviour
 {
     public bool canPlay;
 
+    [SerializeField] private Player player;
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private float animationDelay;
     [SerializeField] private StackObject stackObject;
@@ -17,7 +18,7 @@ public class HandObject : MonoBehaviour
     [SerializeField] private GameObject cardPrefab;
     [SerializeField] private Card[] startingHand;
 
-    private readonly List<CardMaterialController> cards = new List<CardMaterialController>();
+    private List<CardMaterialController> cards = new List<CardMaterialController>();
     private CardMaterialController hover;
 
     private bool hasChanged;
@@ -30,6 +31,8 @@ public class HandObject : MonoBehaviour
 
     private void Update()
     {
+        canPlay = ServiceLocator.ServiceLocator.Get<GameService>().IsPlayerTurn();
+        
         UpdateHover();
 
         if (hover && canPlay && Input.GetMouseButtonDown(0))
@@ -47,6 +50,7 @@ public class HandObject : MonoBehaviour
 
     private void PlayCard(CardMaterialController card)
     {
+        player.PlayCard(card.Card);
         Remove(card);
     }
 
@@ -116,7 +120,7 @@ public class HandObject : MonoBehaviour
         }
     }
 
-    private void Add(Card card)
+    public void Add(Card card)
     {
         GameObject cardObject = Instantiate(cardPrefab, transform);
         cardObject.transform.localPosition = Vector3.zero;
@@ -130,7 +134,7 @@ public class HandObject : MonoBehaviour
         hasChanged = true;
     }
 
-    private void Remove(CardMaterialController card)
+    public void Remove(CardMaterialController card)
     {
         DestroyImmediate(card.gameObject);
         cards.Remove(card);

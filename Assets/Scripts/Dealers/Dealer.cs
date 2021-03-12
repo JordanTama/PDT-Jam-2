@@ -8,7 +8,7 @@ public abstract class Dealer : MonoBehaviour
     [SerializeField] protected DealerSettings dealerSettings;
     [SerializeField] protected Deck startDeck;
     [SerializeField] protected TableController tableController;
-    
+
     public int targetValue;
 
     public enum DealerType
@@ -42,12 +42,10 @@ public abstract class Dealer : MonoBehaviour
         gameService.RegisterDealer(dealerType, this);
     }
 
-    protected void DrawCards()
+    protected virtual void DrawCards()
     {
         while (hand.cards.Count < dealerSettings.cardsInHand && deck.Count > 0)
-        {
             hand.DrawCard();
-        }
     }
 
     public void PlayCard(Card card)

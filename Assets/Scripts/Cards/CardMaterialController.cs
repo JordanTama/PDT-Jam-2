@@ -12,6 +12,7 @@ namespace Cards
         [SerializeField] private GameObject contentPrefab;
         [SerializeField] private Text titleText;
         [SerializeField] private Text valueText;
+        [SerializeField] private Text expiryText;
         [SerializeField] private Text descriptionText;
 
         private readonly List<Material> _materials = new List<Material>();
@@ -117,6 +118,12 @@ namespace Cards
 
             if (parent.TryGetComponent(out Renderer renderer))
                 materials.Add(renderer.material);
+
+            if (parent.TryGetComponent(out Text text))
+            {
+                text.material = new Material(text.GetModifiedMaterial(text.material));
+                materials.Add(text.material);
+            }
         }
         
         #endregion

@@ -210,6 +210,7 @@ MonoBehaviour:
     type: 3}
   titleText: {fileID: 6067093888043355017}
   valueText: {fileID: 1646843936445756881}
+  expiryText: {fileID: 9159964553072822792}
   descriptionText: {fileID: 824902676127508649}
 --- !u!65 &6343776651106081053
 BoxCollider:
@@ -665,6 +666,18 @@ MonoBehaviour:
 --- !u!114 &1646843936445756881 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6719839099925533096, guid: ced2a9eb5ed50f34fa8e2625ccede761,
+    type: 3}
+  m_PrefabInstance: {fileID: 5448064565072716921}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9159964553072822792 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3784662929570147953, guid: ced2a9eb5ed50f34fa8e2625ccede761,
     type: 3}
   m_PrefabInstance: {fileID: 5448064565072716921}
   m_PrefabAsset: {fileID: 0}

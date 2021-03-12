@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8864893261814539108}
+  - component: {fileID: 7312170669997152107}
   - component: {fileID: 8864893261814539107}
   m_Layer: 0
   m_Name: Robot
@@ -33,6 +34,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &7312170669997152107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8864893261814539109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cca5336dbcd55a14c9961f7a5e6d9a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dealerSettings: {fileID: 11400000, guid: 886168fa94c5f0e4eae32cb2b446f01e, type: 2}
+  startDeck: {fileID: 11400000, guid: 3d4f23bcab5686c408465c798827ae3e, type: 2}
+  tableController: {fileID: 0}
+  targetValue: -10
 --- !u!95 &8864893261814539107
 Animator:
   serializedVersion: 3

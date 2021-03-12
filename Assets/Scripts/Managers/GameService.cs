@@ -107,4 +107,9 @@ public class GameService : IService
 
         onEndGame?.Invoke();
     }
+
+    public bool IsPlayerTurn()
+    {
+        return (currentDealer == player);
+    }
 }
