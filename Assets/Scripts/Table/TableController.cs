@@ -34,6 +34,9 @@ public class TableController : MonoBehaviour
         }
     }
 
+    public Player Player => player;
+    public Patron Patron => patron;
+
     private int value;
 
     private List<Card> pile = new List<Card>();

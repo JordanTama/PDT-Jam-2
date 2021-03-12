@@ -15,6 +15,9 @@ public class GameService : IService
     public Action onStartPatronTurn;
     public Action onEndGame;
 
+    public bool GameEnded => gameEnded;
+    public string winningReason = "";
+    
     public bool playerStarts { get; set; } = true;
     public int maxTurnsPerDealer { get; set; } = 3;
 
@@ -102,6 +105,7 @@ public class GameService : IService
     public void EndGame(string reason)
     {
         Debug.Log("Game ends: " + reason);
+        winningReason = reason;
 
         gameEnded = true;
 

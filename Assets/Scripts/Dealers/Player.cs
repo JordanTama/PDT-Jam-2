@@ -24,9 +24,14 @@ public class Player : Dealer
     public override void StartTurn()
     {
         Debug.Log(dealerType + " takes their turn.");
-
+        
         DrawCards();
 
         OnStartTurn?.Invoke();
+    }
+
+    public void RemoveCard(Card card)
+    {
+        hand.RemoveCard(card);
     }
 }

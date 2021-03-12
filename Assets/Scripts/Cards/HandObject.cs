@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Cards;
 using UnityEngine;
 
 public class HandObject : MonoBehaviour
 {
-    public bool canPlay;
+    public bool CanPlay => service.IsPlayerTurn() && !service.GameEnded;
 
     [SerializeField] private Player player;
     [SerializeField] private Animator playerAnimator;
@@ -22,6 +23,12 @@ public class HandObject : MonoBehaviour
     private CardMaterialController hover;
 
     private bool hasChanged;
+    private GameService service;
+
+    private void Awake()
+    {
+        service = ServiceLocator.ServiceLocator.Get<GameService>();
+    }
 
     private void Start()
     {
@@ -31,11 +38,9 @@ public class HandObject : MonoBehaviour
 
     private void Update()
     {
-        canPlay = ServiceLocator.ServiceLocator.Get<GameService>().IsPlayerTurn();
-        
         UpdateHover();
 
-        if (hover && canPlay && Input.GetMouseButtonDown(0))
+        if (hover && CanPlay && Input.GetMouseButtonDown(0))
             PlayCard(hover);
     }
 
@@ -51,6 +56,7 @@ public class HandObject : MonoBehaviour
     private void PlayCard(CardMaterialController card)
     {
         player.PlayCard(card.Card);
+        player.RemoveCard(card.Card);
         Remove(card);
     }
 

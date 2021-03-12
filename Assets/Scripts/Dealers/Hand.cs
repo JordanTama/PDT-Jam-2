@@ -72,7 +72,7 @@ public class Hand
         dealer.PlayCard(card);   
     }
 
-    private void RemoveCard(Card card)
+    public void RemoveCard(Card card)
     {
         cards.Remove(card);
 
